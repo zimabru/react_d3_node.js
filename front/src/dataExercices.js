@@ -1,0 +1,184 @@
+const DataArray = [
+{
+    type:"cat",
+    color:"green",
+    age:13
+},
+{
+    type:"cat",
+    color:"green",
+    age:13
+},
+{
+    type:"cat",
+    color:"green",
+    age:13
+},
+{
+    type:"cat",
+    color:"green",
+    age:13
+},
+{
+    type:"cat",
+    color:"green",
+    age:13
+},
+{
+    type:"cat",
+    color:"green",
+    age:13
+},
+{
+    type:"cat",
+    color:"green",
+    age:13
+},
+{
+    type:"cat",
+    color:"green",
+    age:13
+},
+{
+    type:"cat",
+    color:"green",
+    age:13
+},
+{
+    type:"cat",
+    color:"green",
+    age:13
+},
+{
+    type:"cat",
+    color:"green",
+    age:13
+},
+{
+    type:"cat",
+    color:"green",
+    age:13
+},
+{
+    type:"cat",
+    color:"green",
+    age:13
+},
+{
+    type:"cat",
+    color:"green",
+    age:13
+},
+{
+    type:"cat",
+    color:"green",
+    age:13
+},
+{
+    type:"cat",
+    color:"green",
+    age:13
+},
+{
+    type:"cat",
+    color:"green",
+    age:13
+},
+{
+    type:"cat",
+    color:"green",
+    age:13
+},
+{
+    type:"cat",
+    color:"green",
+    age:13
+},
+{
+    type:"cat",
+    color:"green",
+    age:13
+},
+{
+    type:"cat",
+    color:"green",
+    age:13
+},
+{
+    type:"cat",
+    color:"green",
+    age:13
+},
+{
+    type:"cat",
+    color:"green",
+    age:13
+},
+{
+    type:"cat",
+    color:"green",
+    age:13
+},
+{
+    type:"cat",
+    color:"green",
+    age:13
+},
+{
+    type:"cat",
+    color:"green",
+    age:13
+},
+{
+    type:"cat",
+    colors:"green",
+    age:13
+},
+{
+    type:"cat",
+    color:"green",
+    age:13
+},
+{
+    type:"cat",
+    color:"green",
+    age:13
+},
+{
+    type:"cat",
+    color:"green",
+    age:13
+},
+{
+    type:"cat",
+    colors:"grey",
+    age:13
+},
+{
+    type:"cat",
+    color:"green",
+    age:13
+}
+]
+
+console.log(DataArray);
+console.log(DataArray.length)
+let arrayID =[]
+
+// DataArray.map((elt,id)=>{
+//     let array = Object.keys(elt)
+//     if(array.includes("colors")){
+//         console.log("FOUND at "+ id)
+      
+//         arrayID =[...array, id]
+//     }
+// })
+
+for(let i=0; i< DataArray.length-1; i++){
+    let array = Object.keys(DataArray[i]);
+    if(array.includes("colors")){
+        console.log("Found at "+ i);
+        arrayID.push(i);
+    }
+}
+console.log(arrayID)
