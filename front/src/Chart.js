@@ -90,7 +90,8 @@ const Chart = () => {
 
 				//#region 	
 				const arrayToOrder = [data, []];
-				const showArray =wrapper_main
+
+				const showArray = wrapper_main
 					.selectAll("div")
 					.data(arrayToOrder).enter()
 					.append("ul")
@@ -105,33 +106,43 @@ const Chart = () => {
 					.style("font-size", "bold")
 					.on("click", () => {
 						if (flag) {
-						wrapper_main
-							.style("display", "flex")
+							wrapper_main
+								.style("display", "flex")
 
-						showArray
-						.style("flex","1")
-						.style("background",(d,i, nodes)=>{
-							if(i===0){
-								console.log(nodes)
-								d3.select(nodes[i])
-								.selectAll("li")
-								.data(d[0]).enter()
-								.each(d=>{
-									console.log("Hello")
-									d3.select(this).style().text("Hello")
+							showArray
+								.attr("class", (d, i) => {
+									return "screen-"+ i;
 								})
-								console.log("in the green one", this)
-								return "#a8eb34"
-							}else{
-								console.log("in the blue one", this)
-								return "#221c7a"
-							}
-						})
-					
-						//To=> François what the best practice: i what to loop other the array what attribute name should i use
+								.style("flex", "1")
+								.style("background", (d, i, nodes) => {
+									if (i === 0){
+										console.log("in the green one", d,i, nodes)
+										return "#a8eb34"
+									} else {
+										console.log("in the blue one", this)
+										return "#221c7a"
+									}
+								})
+
+							const firstScreen = d3.select(".screen-0")
+							.selectAll("ul")
+							.data(arrayToOrder[0])
+							.enter()
+							.append("li")
+							.text(function(d){
+								console.log(d);
+								return d.category;
+							})
+
+							console.log(firstScreen)
+							//To=> François what the best prfirstSactice: i what to loop other the array what attribute name should i use
 
 						} else {
 							wrapper_main.style("display", "none");
+							
+							const removefirstScreen  = d3.selectAll(".screen-0 > *").remove()
+
+
 						}
 
 
