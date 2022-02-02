@@ -78,7 +78,7 @@ const Chart = () => {
 					.style("border-radius", "5px")
 
 				//the div
-				const arrayDiv = d3.select("#d3demo")
+				const wrapper_main = d3.select("#d3demo")
 					.append("div")
 					.style("display", "none")
 					.style("position", "absolute")
@@ -86,7 +86,15 @@ const Chart = () => {
 					.style("padding", "7px")
 					.style("height", "34vh")
 					.style("width", "34vw")
-					.style("border-radius", "5px")
+					.style("border-radius", "5px");
+
+				//#region 	
+				const arrayToOrder = [data, []];
+				const showArray =wrapper_main
+					.selectAll("div")
+					.data(arrayToOrder).enter()
+					.append("ul")
+
 
 
 				//button 
@@ -97,25 +105,33 @@ const Chart = () => {
 					.style("font-size", "bold")
 					.on("click", () => {
 						if (flag) {
-							arrayDiv
-								.style("display", "flex")
-								.append("ul")
-								.style("display", "flex")
-								.style("flex-direction", "column")
-								.selectAll("li")
-								.data(data).enter()
-								.append("li")
-								.attr("class","text_for_div")
-								.attr("loop", (d,i)=>{
-									//let myli = d3.selectAll("text_for_div").text(d.category)
-									
-								
-								}).text("Hello there")
+						wrapper_main
+							.style("display", "flex")
 
-			
+						showArray
+						.style("flex","1")
+						.style("background",(d,i, nodes)=>{
+							if(i===0){
+								console.log(nodes)
+								d3.select(nodes[i])
+								.selectAll("li")
+								.data(d[0]).enter()
+								.each(d=>{
+									console.log("Hello")
+									d3.select(this).style().text("Hello")
+								})
+								console.log("in the green one", this)
+								return "#a8eb34"
+							}else{
+								console.log("in the blue one", this)
+								return "#221c7a"
+							}
+						})
+					
+						//To=> François what the best practice: i what to loop other the array what attribute name should i use
 
 						} else {
-							arrayDiv.style("display", "none");
+							wrapper_main.style("display", "none");
 						}
 
 
